@@ -1,7 +1,6 @@
 from typing import Dict
 
 import numpy as np
-from einops import rearrange
 from sklearn.linear_model import LogisticRegression
 
 from art.core import ArtModule
@@ -91,7 +90,7 @@ class AlreadyExistingSolutionBaseline(ArtModule):
         )
 
     def parse_data(self, data):
-        X = rearrange(data[BATCH][INPUT], "b h w -> b 1 h w").float()
+        X = data[BATCH][INPUT].float()
         X = (X / 255 - 0.45) / 0.22
         return {INPUT: X, TARGET: data[BATCH][TARGET]}
 

@@ -1,6 +1,5 @@
 import torch
 import torch.nn as nn
-from einops import rearrange
 from einops.layers.torch import Rearrange
 
 from art.core import ArtModule
@@ -33,7 +32,7 @@ class MNISTModel(ArtModule):
         self.normalize_img = normalize_img
 
     def parse_data(self, data):
-        X = rearrange(data[BATCH][INPUT], "b h w -> b 1 h w").float()
+        X = data[BATCH][INPUT].float()
         if self.normalize_img:
             X /= 255
             X = (X - 0.1307) / 0.3081  # mean value of MNIST dataset

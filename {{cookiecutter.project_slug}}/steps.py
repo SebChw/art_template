@@ -45,7 +45,7 @@ class DataAnalysis(ExploreData):
                     .dataset[sample_idx]["input"]
                     .numpy()
                 )
-                axes[i].imshow(img, cmap="gray")
+                axes[i].imshow(img[0], cmap="gray")
                 axes[i].set_title(f"Class: {cls}")
                 axes[i].axis("off")
 
